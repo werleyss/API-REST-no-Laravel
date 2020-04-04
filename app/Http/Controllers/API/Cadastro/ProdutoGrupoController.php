@@ -9,45 +9,45 @@ use App\Http\Resources\ProdutoGrupoResource;
 
 class ProdutoGrupoController extends Controller
 {
-    private $produtoGrupo;
+    private $item;
     private $totalPage = 10;
 
-    public function __construct(ProdutoGrupo $produtoGrupo) 
+    public function __construct(ProdutoGrupo $item) 
     {
-        $this->produtoGrupo = $produtoGrupo;
+        $this->item = $item;
     }
 
     public function index()
     {
-        return ProdutoGrupoResource::collection($this->produtoGrupo::paginate(10));
+        return ProdutoGrupoResource::collection($this->item::paginate(10));
     }
 
     public function store(Request $request)
     {
         $dataForm = $request->all();
-        $insert = $this->produtoGrupo->create($dataForm);
+        $insert = $this->item->create($dataForm);
 
         return new ProdutoGrupoResource($insert);
     }
 
     public function show($id)
     {
-        return new ProdutoGrupoResource($this->produtoGrupo::find($id));
+        return new ProdutoGrupoResource($this->item::find($id));
     }
 
     public function update(Request $request, $id)
     {
         $dataForm = $request->all();
-        $grupo = $this->produtoGrupo->find($id);
-        $grupo->update($dataForm);
+        $update = $this->item->find($id);
+        $update->update($dataForm);
 
-        return new ProdutoGrupoResource($grupo);
+        return new ProdutoGrupoResource($update);
     }
 
     public function destroy($id)
     {
-        $grupo = $this->produtoGrupo->find($id);
-        $grupo->delete();
+        $delete = $this->item->find($id);
+        $delete->delete();
 
         return response()->json(null,204);
     }

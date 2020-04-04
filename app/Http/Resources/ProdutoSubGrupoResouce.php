@@ -11,7 +11,7 @@ class ProdutoSubGrupoResouce extends JsonResource
         return [
             'id'                => $this->id,
             'nome'              => $this->nome,
-            'produtogrupos_id'  => $this->produtogrupos_id,
+            'produtoGrupos_id'   => $this->produtoGrupos_id,
             'comissao'          => $this->comissao,
             'foto'              => $this->foto,
         ];

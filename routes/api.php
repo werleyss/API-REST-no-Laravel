@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) { return $request->user(); });
 
+Route::apiResource('produto', 'API\Cadastro\ProdutoController');
 Route::apiResource('produto-grupo', 'API\Cadastro\ProdutoGrupoController');
 Route::apiResource('produto-sub-grupo', 'API\Cadastro\ProdutoSubGrupoController');
